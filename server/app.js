@@ -9,7 +9,12 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+app.all("*",function(req,res,next){
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader("Access-Control-Allow-Methods", "*");
+	res.setHeader("Access-Control-Allow-Headers", "content-type");
+	next();
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
